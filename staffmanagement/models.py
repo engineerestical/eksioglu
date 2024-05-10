@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from usermanagement.models import CustomUser
+#from usermanagement.models import CustomUser
 
 
 class Department(models.Model):
@@ -40,8 +40,8 @@ class OfficeStaff(models.Model):
     is_active = models.BooleanField(_("Aktif"), default = True)
     created_at = models.DateTimeField(_("Oluşturma Zamanı"), auto_now_add=True)
     updated_at = models.DateTimeField(_("Son Güncelleme Zamanı"), auto_now=True)
-    created_by = models.ForeignKey(CustomUser, verbose_name=_("Oluşturan"), related_name="olusturulan_ofis_personeli", on_delete=models.SET_NULL, null=True, editable=False)
-    last_updated_by = models.ForeignKey(CustomUser, verbose_name=_("Son Güncelleyen"), related_name="son_guncellenen_ofis_personeli", on_delete=models.SET_NULL, null=True, editable=False)
+    #created_by = models.ForeignKey(CustomUser, verbose_name=_("Oluşturan"), related_name="olusturulan_ofis_personeli", on_delete=models.SET_NULL, null=True, editable=False)
+    #last_updated_by = models.ForeignKey(CustomUser, verbose_name=_("Son Güncelleyen"), related_name="son_guncellenen_ofis_personeli", on_delete=models.SET_NULL, null=True, editable=False)
 
 
     class Meta:
@@ -65,25 +65,25 @@ class ExpertStaff(models.Model):
     is_active = models.BooleanField(_("Aktif"), default = True)
     created_at = models.DateTimeField(_("Oluşturma Zamanı"), auto_now_add=True)
     updated_at = models.DateTimeField(_("Son Güncelleme Zamanı"), auto_now=True)
-    created_by = models.ForeignKey(CustomUser, verbose_name=_("Oluşturan"), related_name="olusturulan_usta_servisler", on_delete=models.SET_NULL, null=True, editable=False)
-    last_updated_by = models.ForeignKey(CustomUser, verbose_name=_("Son Güncelleyen"), related_name="son_guncellenen_usta_servisler", on_delete=models.SET_NULL, null=True, editable=False)
+    #created_by = models.ForeignKey(CustomUser, verbose_name=_("Oluşturan"), related_name="olusturulan_usta_servisler", on_delete=models.SET_NULL, null=True, editable=False)
+    #last_updated_by = models.ForeignKey(CustomUser, verbose_name=_("Son Güncelleyen"), related_name="son_guncellenen_usta_servisler", on_delete=models.SET_NULL, null=True, editable=False)
 
-    def get_aggregated_profit_quantity(self):
-        """
-        Calculate the aggregated profit quantity for the field representative.
-        """
-        # Import Case model here to avoid circular imports
-        from filemanagement.models import Case
+    # def get_aggregated_profit_quantity(self):
+    #     """
+    #     Calculate the aggregated profit quantity for the field representative.
+    #     """
+    #     # Import Case model here to avoid circular imports
+    #     from filemanagement.models import Case
         
-        # Get all the cases related to the field representative
-        related_cases = Case.objects.filter(expert_representative=self)
+    #     # Get all the cases related to the field representative
+    #     related_cases = Case.objects.filter(expert_representative=self)
 
-        # Calculate the aggregated profit quantity
-        total_profit_quantity = sum(case.profit_quantity for case in related_cases)
+    #     # Calculate the aggregated profit quantity
+    #     total_profit_quantity = sum(case.profit_quantity for case in related_cases)
 
-        return total_profit_quantity
+    #     return total_profit_quantity
     
-    get_aggregated_profit_quantity.short_description = 'Kar/Zarar Miktarı'
+    # get_aggregated_profit_quantity.short_description = 'Kar/Zarar Miktarı'
     
     class Meta:
         verbose_name = _("Usta/Servis")
@@ -107,25 +107,25 @@ class FieldStaff(models.Model):
     is_active = models.BooleanField(_("Aktif"), default = True)
     created_at = models.DateTimeField(_("Oluşturma Zamanı"), auto_now_add=True)
     updated_at = models.DateTimeField(_("Son Güncelleme Zamanı"), auto_now=True)
-    created_by = models.ForeignKey(CustomUser, verbose_name=_("Oluşturan"), related_name="olusturulan_saha_ekipleri", on_delete=models.SET_NULL, null=True, editable=False)
-    last_updated_by = models.ForeignKey(CustomUser, verbose_name=_("Son Güncelleyen"), related_name="son_guncellenen_saha_ekipleri", on_delete=models.SET_NULL, null=True, editable=False)
+    # created_by = models.ForeignKey(CustomUser, verbose_name=_("Oluşturan"), related_name="olusturulan_saha_ekipleri", on_delete=models.SET_NULL, null=True, editable=False)
+    # last_updated_by = models.ForeignKey(CustomUser, verbose_name=_("Son Güncelleyen"), related_name="son_guncellenen_saha_ekipleri", on_delete=models.SET_NULL, null=True, editable=False)
 
-    def get_aggregated_profit_quantity(self):
-        """
-        Calculate the aggregated profit quantity for the field representative.
-        """
-        # Import Case model here to avoid circular imports
-        from filemanagement.models import Case
+    # def get_aggregated_profit_quantity(self):
+    #     """
+    #     Calculate the aggregated profit quantity for the field representative.
+    #     """
+    #     # Import Case model here to avoid circular imports
+    #     from filemanagement.models import Case
         
-        # Get all the cases related to the field representative
-        related_cases = Case.objects.filter(field_representative=self)
+    #     # Get all the cases related to the field representative
+    #     related_cases = Case.objects.filter(field_representative=self)
 
-        # Calculate the aggregated profit quantity
-        total_profit_quantity = sum(case.profit_quantity for case in related_cases)
+    #     # Calculate the aggregated profit quantity
+    #     total_profit_quantity = sum(case.profit_quantity for case in related_cases)
 
-        return total_profit_quantity
+    #     return total_profit_quantity
     
-    get_aggregated_profit_quantity.short_description = 'Kar/Zarar Miktarı'
+    # get_aggregated_profit_quantity.short_description = 'Kar/Zarar Miktarı'
 
     
     class Meta:
