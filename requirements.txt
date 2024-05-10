@@ -21,7 +21,7 @@ psycopg2-binary==2.9.9
 pytz==2024.1
 PyYAML==6.0.1
 sqlparse==0.4.4
-tablib==3.6.0
+tablib==3.5.0
 typing_extensions==4.11.0
 unicodecsv==0.14.1
 uritemplate==4.1.1
